@@ -24,3 +24,7 @@ This project was based on the combination of two other demo apps:
 
 - https://github.com/comoser/rn-background-location (Uses "Background Service" for better power efficiency but is limited to locations updates down to 1 minute... I needed something faster)
 - Android's [LocationUpdatesForegroundService Example](https://github.com/android/location-samples/tree/432d3b72b8c058f220416958b444274ddd186abd/LocationUpdatesForegroundService) found in their [Request Location Updates](https://developer.android.com/training/location/request-updates#addt-resources) page.
+
+### WARNING
+
+I'm very much new to Android development so I had to stumble through parts of this... During development I was testing on device and in simulators using Android API 28 + 29. I have not done exaustive testing, nor know enough about Android to say with confidence how far back this code will support.
