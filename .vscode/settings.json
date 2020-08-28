@@ -1,0 +1,7 @@
+{
+  "typescript.format.enable": false,
+  "typescript.suggest.enabled": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "flow.pathToFlow": "${workspaceFolder}/node_modules/.bin/flow"
+}
