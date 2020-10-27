@@ -1,8 +1,11 @@
 package com.mranderson.locationsample;
 
+// ---------- START: Required by `package com.mranderson.locationsample.location` ----------
 import androidx.multidex.MultiDexApplication;
+import com.mranderson.locationsample.location.LocationPackage;
+// ---------- STOP: Required by `package com.mranderson.locationsample.location` ----------
 
-// import android.app.Application;
+// ---------- REMOVED: `import android.app.Application;` ----------
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -12,8 +15,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import com.mranderson.locationsample.location.LocationPackage;
 
+// ---------- REPLACED: `extends Application` with `extends MultiDexApplication` ----------
 public class MainApplication extends MultiDexApplication implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -29,7 +32,9 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          // ---------- START: Required by `package com.mranderson.locationsample.location` ----------
           packages.add(new LocationPackage());
+          // ---------- STOP: Required by `package com.mranderson.locationsample.location` ----------
           return packages;
         }
 
