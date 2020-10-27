@@ -44,3 +44,13 @@ However, a number of other changes also need to be made to the main React Native
 - multiple `ic_notify_icon.png` files found in the `drawable-...` folders inside [res](./android/app/src/main/res) (used as the icon that shows in the system notification try while the forground service is active)
 
 Hopefully that covers pretty much all of it. If I've missed any changes, I'll come back in here and update this list. I also tried to add comments to those files to indicate which changes or additions need to be made.
+
+### Notes about the React Native app code
+
+First and foremost, this sample project uses [React Native Location](https://github.com/timfpark/react-native-location). So, if you plan on trying to copy my changes into your own project, you may want to look over the docs for `RNLocation` first.
+
+On the iOS side of things, `RNLocation` provides everything you need. It also works on the Android side, just not while the app is "in the background". On both platforms, `RNLocation` is used to prompt the user for location access permission. To do this, you use `RNLocation.requestPermission()` which, in this project, can be found in the [<LocationAccessButton> component](./app/components/LocationAccessButton.js#L21-L35) (or just read more about how it in the `RNLocation` docs).
+
+For iOS, you also need to initialize `RNLocation` by calling `RNLocation.configure()` which, in this project, can be found in the [index.js](./index.js#L15-L33). In this case, you'll see that I left in the "Android Only" configuration options, even though this sample project actually uses it's own [Android Native Module](https://reactnative.dev/docs/native-modules-android) mentioned above. Any options within the `RNLocation.configure()` call will only effect iOS at this point. If you want to adjust the interval or anything on the Android side, you would need to make changes directly to the Android specific native module files.
+
+Lastly, for this project, I chose to create a [reducer](./app/reducer.js) and a couple of [custom hooks](./app/hooks.js) to handle the location data and starting/stopping of the location tracking subscription. On iOS, the `useLocationTracking()` hook is used to start and stop `RNLocation.subscribeToLocationUpdates()`. On Android, the `useNativeLocationTracking()` hook is used to start and stop background tracking as well as creates a native event listener which listens for location events that are emitted by the Android Native Module. Both of these hooks then fire an `UpdatePosition` action to the reducer to handle the data provided by each and normalize them into a single usable format in the app.
