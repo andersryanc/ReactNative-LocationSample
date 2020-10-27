@@ -29,7 +29,7 @@ This project was based on the combination of two other demo apps:
 
 I'm very much new to Android development so I had to stumble through parts of this... During development I was testing on device and in simulators using Android API 28 + 29. I have not done exaustive testing, nor know enough about Android to say with confidence how far back this code will support.
 
-### Notes about Android Specific changes:
+### Notes about Android Specific changes
 
 As listed above in the feature sections, iOS is taken care of by [React Native Location](https://github.com/timfpark/react-native-location). The core of this sample project is in the Android specific code. Most of the changes are rolled up into an [Android Native Module](https://reactnative.dev/docs/native-modules-android), located here:
 
